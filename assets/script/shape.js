@@ -1,24 +1,20 @@
 'use strict';
 
-import { fileURLToPath } from ".index.js";
-
 export default class Shape {
-  constructor(name, color) {
-    this._name = name;
-    this._color = color;
+  constructor(name, colour) {
+      this._name = name;
+      this._colour = colour;
   }
 
   get name() {
-    return this._name;
+      return this._name;
   }
 
-  get color() {
-    return this._color;
+  get colour() {
+      return this._colour;
   }
 
   getInfo() {
-    alert(`Shape: ${this.name}, Color: ${this.color}`);
+      return `Name: ${this._name}, Colour: ${this._colour}`;
   }
 }
-
-export { getFile, getname, getInfo as file}
