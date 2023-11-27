@@ -22,17 +22,22 @@
     <div class="flex-container">
         <label for="shapeSelect"></label>
         <select id="shapeSelect" class="menu-up">
+            <option value="" selected disabled hidden>Shape</option>
             <option value="circle">Circle</option>
             <option value="square">Square</option>
         </select>
     
         <label for="colorSelect"></label>
-        <select id="colorSelect" class="menu-up"></select>
+        <select id="colorSelect" class="menu-up">
+            <option value="" selected disabled hidden>Color</option>
+        </select>
     
         <button id="createButton">Create</button>
+        
     </div>
-
-    <div id="shapeContainer" class="shape-container"></div>
+    <div class="shape-bg">
+        <div id="shapeContainer" class="shape-container"></div>
+    </div>
     <div id="messageContainer"></div>
 
     <script src="./assets/script/shape.js" type="module"></script>
