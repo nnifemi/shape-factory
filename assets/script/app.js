@@ -1,25 +1,35 @@
 'use strict';
 
-// app.js
 import Shape from './shape.js';
 
 const shapesArray = [];
-const maxShapes = 36;
+const maxRows = 4;
+const maxColumns = 6;
 let infoParagraph;
 
 function createShape() {
-    if (shapesArray.length >= maxShapes) {
-        alert('Storage is full. You cannot add more shapes.');
-        return;
-    }
-
     const shapeSelect = document.getElementById('shapeSelect');
     const colorSelect = document.getElementById('colorSelect');
     const shapeContainer = document.getElementById('shapeContainer');
     const messageContainer = document.getElementById('messageContainer');
+    const shapeBackground = document.querySelector('.shape-bg');
+    const messagesBelowContainer = document.getElementById('messagesBelowContainer');
+    const selectContainer = document.querySelector('.select-container');
 
     const selectedShape = shapeSelect.value;
     const selectedColor = colorSelect.value;
+
+    if (!selectedShape || !selectedColor) {
+        messageContainer.innerHTML = '<p>Please select both shape and color.</p>';
+        return;
+    }
+
+    messageContainer.innerHTML = '';
+
+    if (shapesArray.length >= maxRows * maxColumns) {
+        messageContainer.innerHTML = '<p>The maximum number of shapes has been reached. You cannot add more shapes.</p>';
+        return;
+    }
 
     const shape = new Shape(selectedShape, selectedColor);
 
@@ -28,8 +38,8 @@ function createShape() {
     const shapeDiv = document.createElement('div');
     shapeDiv.className = `shape ${selectedShape}`;
     shapeDiv.style.backgroundColor = selectedColor;
-    shapeDiv.style.width = '36px';
-    shapeDiv.style.height = '36px';
+    shapeDiv.style.width = '45px';
+    shapeDiv.style.height = '45px';
 
     if (selectedShape === 'square') {
         shapeDiv.style.borderRadius = '5px';
@@ -37,7 +47,23 @@ function createShape() {
 
     shapeDiv.addEventListener('click', () => displayShapeInfo(shape));
 
-    shapeContainer.insertBefore(shapeDiv, shapeContainer.firstChild);
+    shapeContainer.appendChild(shapeDiv);
+
+    if (shapesArray.length === maxRows * maxColumns) {
+        document.getElementById('createButton').disabled = true;
+        messageContainer.innerHTML = '<p>The maximum number of shapes has been reached. You cannot add more shapes.</p>';
+    }
+
+    shapeBackground.style.display = 'block';
+
+    // Display message below the shape container
+    const messageDiv = document.createElement('div');
+    messageDiv.textContent = `Unit ${shapesArray.length - shapesArray.indexOf(shape)}: ${shape.name} ${getColorName(shape.colour)}`;
+    messagesBelowContainer.appendChild(messageDiv);
+
+    // Set the position of the select container to fixed
+    selectContainer.style.position = 'fixed';
+    selectContainer.style.top = '30vh'; // Adjust as needed
 }
 
 const colorOptions = document.getElementById('colorSelect');
