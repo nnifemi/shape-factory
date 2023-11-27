@@ -9,43 +9,60 @@ body {
   margin: 0;
   background-color: #111;
   color: white;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Finger Paint', 'Nunito Sans', sans-serif;
+}
+
+.container {
+  text-align: center;
 }
 
 h1 {
-  font-family: 'Finger Paint', cursive;
+  top: 20vh;
+  position: fixed;
+  margin: 0;
+}
+
+.select-container {
+  position: fixed;
+  top: 30vh; /* Adjust as needed */
+  margin-bottom: 6vh;
+}
+
+#shapeSelect,
+#colorSelect {
+  padding: 5px;
+  color: #fff;
+  background-color: #333;
+  border-radius: 5px;
 }
 
 .shape-container {
-  margin-left: 79vh;
-  margin-right: auto;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
   gap: 5px;
-  padding-left: 8vh;
-  position: relative;
-  z-index: 0;
+  margin-top: 20px;
 }
 
-
 .shape {
-  width: 36px;
-  height: 36px;
   border: 2px solid black;
   border-radius: 50%;
   cursor: pointer;
-  transform: translateY(100%) translateX(-100%);
+  width: 45px;
+  height: 45px;
 }
 
 #messageContainer {
   color: #ffffff;
-  margin-top: 25px;
-  position: relative;
+  bottom: 20vh;
+  position: fixed;
   z-index: 1;
 }
 
-label, select, button {
-  margin-right: 10px;
+label,
+select,
+button {
+  margin: 0 5px; /* Adjust if needed */
   border-radius: 5px;
 }
 
@@ -59,13 +76,7 @@ button {
 }
 
 button:hover {
-  background-color: #007acc; 
-}
-
-select {
-  padding: 5px;
-  color: #fff;
-  background-color: #333;
+  background-color: #007acc;
 }
 
 .fa {
@@ -74,28 +85,16 @@ select {
 }
 
 .flex-container {
-  display: flex;
   margin-bottom: 20px;
 }
 
-.menu-up {
-  position: relative;
-}
-
-.menu-up option {
+.shape-bg {
+  display: none;
   background-color: #333;
-  color: white;
+  padding: 5px 20px 20px;
+  margin-bottom: 20px;
 }
 
-.menu-up::before {
-  content: '\25BC';
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 8px;
-  pointer-events: none;
-}
-
-.menu-up:hover::before {
-  content: '\25B2';
+.shape-container {
+  margin-top: 10px;
 }
