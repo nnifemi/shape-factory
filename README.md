@@ -5,10 +5,6 @@ Shape Factory is a simple web application that allows users to create and displa
 ## Table of Contents
 - [Demo](#demo)
 - [Features](#features)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Demo
 Visit the [Shape Factory Demo](https://nnifemi.github.io/shape-factory/) to see the application in action.
